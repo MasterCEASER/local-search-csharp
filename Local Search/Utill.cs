@@ -11,14 +11,12 @@ namespace Local_Search
         public static String InitiateRandomEightQueen()
         {
             Random RandomObj = new Random();
-            String state = "";
             int[] stateInt = new int[8];
             for (int i = 0; i < 8; i++)
             {
                 stateInt[i] = RandomObj.Next(1,8);
             }
-            state = String.Join(" ",stateInt);
-            return state;
+            return String.Join(" ",stateInt);
         }
     }
 }
