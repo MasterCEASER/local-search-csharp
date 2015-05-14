@@ -10,6 +10,7 @@ namespace Local_Search
     {
         static void Main(string[] args)
         {
+            Console.WriteLine(Utill.InitiateRandomEightQueen());
         }
     }
 }
