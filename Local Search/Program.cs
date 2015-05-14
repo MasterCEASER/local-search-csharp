@@ -10,7 +10,10 @@ namespace Local_Search
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Utill.InitiateRandomEightQueen());
+            String InitialState = Utill.InitiateRandomEightQueen();
+            Console.WriteLine(InitialState);
+            int InitialStateHeuristic = Utill.Heuristic(InitialState);
+            Console.WriteLine(InitialStateHeuristic + "");
         }
     }
 }
