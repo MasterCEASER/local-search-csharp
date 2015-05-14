@@ -10,10 +10,9 @@ namespace Local_Search
     {
         static void Main(string[] args)
         {
-            String InitialState = Utill.InitiateRandomEightQueen();
-            Console.WriteLine(InitialState);
-            int InitialStateHeuristic = Utill.Heuristic(InitialState);
-            Console.WriteLine(InitialStateHeuristic + "");
+            String FinalStateOfEightQueenUsingHillClimbing = HillClimbing.SolveEightPuzzle();
+            Console.WriteLine(FinalStateOfEightQueenUsingHillClimbing);
+            Console.WriteLine("Final State Heuristic = " + Utill.Heuristic(FinalStateOfEightQueenUsingHillClimbing));
         }
     }
 }

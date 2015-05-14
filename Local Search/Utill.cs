@@ -33,23 +33,33 @@ namespace Local_Search
                 {
                     if (StateInt[i] == StateInt[j])
                     {
-                        Console.WriteLine("Row Collision: i =  " + i + " j = " + j);
+                        //Console.WriteLine("Row Collision: i =  " + i + " j = " + j);
                         RowCollisions++;
                     }
                     if (StateInt[i] == (StateInt[j] + count))
                     {
+                        //Console.WriteLine("Diagonal Collision: i =  " + i + " j = " + j);
                         DiagonalColliions++;
-                        Console.WriteLine("Diagonal Collision: i =  " + i + " j = " + j);
                     }
                     if (StateInt[i] == (StateInt[j] - count))
                     {
-                        Console.WriteLine("Diagonal Collision: i =  " + i + " j = " + j);
+                        //Console.WriteLine("Diagonal Collision: i =  " + i + " j = " + j);
                         DiagonalColliions++;
                     }
                     count++;
                 }
             }
             return (RowCollisions + ColoumnCollisions + DiagonalColliions);
+        }
+        public static int RandomNumberExceptNumber(int start, int end, int num)
+        {
+            Random RandomObj = new Random(DateTime.Now.Millisecond);
+            int result = RandomObj.Next(start,end);
+            while (result == num)
+            {
+                result = RandomObj.Next(start, end);
+            }
+            return result;
         }
     }
 }
