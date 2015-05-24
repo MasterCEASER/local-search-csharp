@@ -21,9 +21,9 @@ namespace Local_Search
         {
             int ComputationalBudget = 50;
             String InitialState = Util.InitiateRandomEightQueen();
-            Console.WriteLine("Initial State = " + InitialState);
+            //Console.WriteLine("Initial State = " + InitialState);
             int InitialStateHeuristic = Util.Heuristic(InitialState);
-            Console.WriteLine("Initial State Heuristic = " + InitialStateHeuristic);
+            //Console.WriteLine("Initial State Heuristic = " + InitialStateHeuristic);
             int count = 0;
             String RandomChild;
             while (true)

@@ -9,7 +9,7 @@ namespace Local_Search
 
     class EightQuineComparer : IComparer<String>
     {
-        int Compare(String a, String b)
+        public int Compare(String a, String b)
         {
             return Util.Heuristic(b) - Util.Heuristic(a);
         }

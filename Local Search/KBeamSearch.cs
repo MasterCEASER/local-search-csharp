@@ -37,10 +37,19 @@ namespace Local_Search
                     }
                 }
                 Array.Sort(RandomChildsOfAllStates, new EightQuineComparer());
+                Array.Sort(ParentStates, new EightQuineComparer());
+                String FittestStateOfAllChilds = RandomChildsOfAllStates[0];
+                //Final State Reached
+                if(Util.Heuristic(FittestStateOfAllChilds) == 0)
+                    return FittestStateOfAllChilds;
+                //No child state is better than best parrent so, best parrent is our answer
+                if (Util.Heuristic(FittestStateOfAllChilds) > Util.Heuristic(ParentStates[0]))
+                    return ParentStates[0];
                 ParentStates = RandomChildsOfAllStates.Take(K).ToArray();
                 ++BudgetConsumed;
             }
-            return null;
+            //When budget consume is over than best from the parrent states are our answer
+            return ParentStates[0];
         }
     }
 }

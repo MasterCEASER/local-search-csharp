@@ -11,8 +11,12 @@ namespace Local_Search
         static void Main(string[] args)
         {
             String FinalStateOfEightQueenUsingHillClimbing = HillClimbing.SolveEightPuzzle();
-            Console.WriteLine(FinalStateOfEightQueenUsingHillClimbing);
+            Console.WriteLine("Hill Climbing = " + FinalStateOfEightQueenUsingHillClimbing);
             Console.WriteLine("Final State Heuristic = " + Util.Heuristic(FinalStateOfEightQueenUsingHillClimbing));
+
+            String FinalStateOfEightQueenUsingkBeam = KBeamSearch.SolveEightPuzzle(3,5);
+            Console.WriteLine("K beam = " + FinalStateOfEightQueenUsingkBeam);
+            Console.WriteLine("Final State heuristic using K beam = "+Util.Heuristic(FinalStateOfEightQueenUsingkBeam));
         }
     }
 }
