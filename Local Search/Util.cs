@@ -70,5 +70,14 @@ namespace Local_Search
             }
             return result;
         }
+        public static String GetRandomChildState(String parrent)
+        {
+            Random RandomObj = new Random(DateTime.Now.Millisecond);
+            int indexToBeChanged = RandomObj.Next(0, 7);
+            Int32[] ParrentInt = parrent.Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
+            int NumberReplaced = Util.RandomNumberExceptNumber(0, 7, ParrentInt[indexToBeChanged]);
+            ParrentInt[indexToBeChanged] = NumberReplaced;
+            return String.Join(" ", ParrentInt);
+        }
     }
 }

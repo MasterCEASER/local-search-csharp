@@ -8,15 +8,6 @@ namespace Local_Search
 {
     class KBeamSearch
     {
-        static String GetRandomChildState(String parrent)
-        {
-            Random RandomObj = new Random(DateTime.Now.Millisecond);
-            int indexToBeChanged = RandomObj.Next(0, 7);
-            Int32[] ParrentInt = parrent.Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
-            int NumberReplaced = Util.RandomNumberExceptNumber(0, 7, ParrentInt[indexToBeChanged]);
-            ParrentInt[indexToBeChanged] = NumberReplaced;
-            return String.Join(" ", ParrentInt);
-        }
         public static String SolveEightPuzzle(int K, int ComputationalBudget)
         {   
             int BudgetConsumed = 0;
@@ -33,7 +24,7 @@ namespace Local_Search
                 {
                     for (int j = 0; j < K; ++j)
                     {
-                        RandomChildsOfAllStates[i * K + j] = GetRandomChildState(ParentStates[j]);
+                        RandomChildsOfAllStates[i * K + j] = Util.GetRandomChildState(ParentStates[j]);
                     }
                 }
                 Array.Sort(RandomChildsOfAllStates, new EightQuineComparer());
