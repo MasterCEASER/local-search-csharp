@@ -12,7 +12,7 @@ namespace Local_Search
         {
             String FinalStateOfEightQueenUsingHillClimbing = HillClimbing.SolveEightPuzzle();
             Console.WriteLine(FinalStateOfEightQueenUsingHillClimbing);
-            Console.WriteLine("Final State Heuristic = " + Utill.Heuristic(FinalStateOfEightQueenUsingHillClimbing));
+            Console.WriteLine("Final State Heuristic = " + Util.Heuristic(FinalStateOfEightQueenUsingHillClimbing));
         }
     }
 }

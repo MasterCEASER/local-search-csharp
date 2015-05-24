@@ -8,61 +8,39 @@ namespace Local_Search
 {
     class KBeamSearch
     {
-        static String getRandomChildState(String parrent)
+        static String GetRandomChildState(String parrent)
         {
             Random RandomObj = new Random(DateTime.Now.Millisecond);
             int indexToBeChanged = RandomObj.Next(0, 7);
             Int32[] ParrentInt = parrent.Split(' ').Select(n => Convert.ToInt32(n)).ToArray();
-            int NumberReplaced = Utill.RandomNumberExceptNumber(0, 7, ParrentInt[indexToBeChanged]);
+            int NumberReplaced = Util.RandomNumberExceptNumber(0, 7, ParrentInt[indexToBeChanged]);
             ParrentInt[indexToBeChanged] = NumberReplaced;
             return String.Join(" ", ParrentInt);
         }
-        public static String SolveEightPuzzle()
-        {
-            int ComputationalBudget = 50;
-            Random RandomObj = new Random(DateTime.Now.Millisecond);
-            int k = RandomObj.Next(1,10);
+        public static String SolveEightPuzzle(int K, int ComputationalBudget)
+        {   
+            int BudgetConsumed = 0;
+            String[] ParentStates = new String[K];
+            String[] RandomChildsOfAllStates = new String[K*K];
             
-            String[] InitialStates = new String[k];
-            int[] InitialHeuristics = new int[k];
-            String[] RandomChildsOfAllStates = new String[k*k];
+            for (int i = 0; i < K; ++i)
+                ParentStates[i] = Util.InitiateRandomEightQueen();
 
-            for (int i = 0; i < k; i++)
+            while (BudgetConsumed < ComputationalBudget)
             {
-                InitialStates[i] = Utill.InitiateRandomEightQueen();
-            }
-            for (int i = 0; i < k; i++)
-            {
-                Console.WriteLine("Initial State = " + InitialStates[i]);
-                int InitialStateHeuristic = Utill.Heuristic(InitialStates[i]);
-                Console.WriteLine("Initial State Heuristic = " + InitialStateHeuristic);
-                int count = 0;
-                String RandomChild;
-                for (int j = 0; j < k; j++ )
+                
+                for (int i = 0; i < K; ++i)
                 {
-                    for (int L = 0; L < k; L++)
+                    for (int j = 0; j < K; ++j)
                     {
-                        RandomChild = getRandomChildState(InitialStates[j]);
-                        while (Utill.Heuristic(InitialStates[j]) < Utill.Heuristic(RandomChild) && count < ComputationalBudget)
-                        {
-                            RandomChild = getRandomChildState(InitialStates[j]);
-                            count++;
-                        }
-                        if (count >= ComputationalBudget)
-                        {
-                            RandomChildsOfAllStates[(j * k) + L] = RandomChild;
-                            break;
-                        }
-                        RandomChildsOfAllStates[(j * k) + L] = RandomChild;
-                        count = 0;
+                        RandomChildsOfAllStates[i * K + j] = GetRandomChildState(ParentStates[j]);
                     }
                 }
+                Array.Sort(RandomChildsOfAllStates, new EightQuineComparer());
+                ParentStates = RandomChildsOfAllStates.Take(K).ToArray();
+                ++BudgetConsumed;
             }
-            return "";
-            //if (Utill.Heuristic(InitialState) < Utill.Heuristic(RandomChild))
-            //    return InitialState;
-            //else
-            //    return RandomChild;
+            return null;
         }
     }
 }

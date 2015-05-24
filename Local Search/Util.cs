@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Local_Search
 {
-    class Utill
+
+    class EightQuineComparer : IComparer<String>
+    {
+        int Compare(String a, String b)
+        {
+            return Util.Heuristic(b) - Util.Heuristic(a);
+        }
+    }
+
+    class Util
     {
         public static String InitiateRandomEightQueen()
         {
