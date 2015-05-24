@@ -17,6 +17,7 @@ namespace Local_Search
             String FinalStateOfEightQueenUsingkBeam = KBeamSearch.SolveEightPuzzle(3,5);
             Console.WriteLine("K beam = " + FinalStateOfEightQueenUsingkBeam);
             Console.WriteLine("Final State heuristic using K beam = "+Util.Heuristic(FinalStateOfEightQueenUsingkBeam));
+
         }
     }
 }
