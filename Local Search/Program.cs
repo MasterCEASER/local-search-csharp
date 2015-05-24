@@ -10,7 +10,7 @@ namespace Local_Search
     {
         static void Main(string[] args)
         {
-            String FinalStateOfEightQueenUsingHillClimbing = HillClimbing.SolveEightPuzzle();
+            String FinalStateOfEightQueenUsingHillClimbing = HillClimbing.SolveEightPuzzle(10);
             Console.WriteLine("Hill Climbing = " + FinalStateOfEightQueenUsingHillClimbing);
             Console.WriteLine("Final State Heuristic = " + Util.Heuristic(FinalStateOfEightQueenUsingHillClimbing));
 

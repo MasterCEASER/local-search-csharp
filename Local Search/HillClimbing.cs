@@ -19,7 +19,7 @@ namespace Local_Search
             while (count <= ComputationalBudget)
             {
                 RandomChild = Util.GetRandomChildState(InitialState);
-                while (Util.Heuristic(InitialState) < Util.Heuristic(RandomChild) && count < ComputationalBudget)
+                while (Util.Heuristic(InitialState) < Util.Heuristic(RandomChild) && count <= ComputationalBudget)
                 {
                     RandomChild = Util.GetRandomChildState(InitialState);
                     count++;
